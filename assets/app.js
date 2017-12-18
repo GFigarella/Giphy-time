@@ -78,25 +78,31 @@ $(document).ready(function () {
                 var p = $("<p>")
                 p.html(response.data[i].rating);
                 $("#gifs").append(p);
-                // grab the url
+                // dynamically creating the images
+                // setting attributes for data-still and data-animate to be able to change them later on
                 var img = $("<img>");
                 img.attr('src', response.data[i].images.fixed_height_still.url);
-                img.attr("data-animate", response.data[i].images.fixed_height.url);
+                img.attr('data-still', response.data[i].images.fixed_height_still.url);
+                img.attr('data-animate', response.data[i].images.fixed_height.url);
+                // data state helps track which url we're using
                 img.attr('data-state', "still");
                 $("#gifs").append(img);
-            }
-
-                
-            $(document).on('click', "img", function(){
-                console.log("data-state: " + $(this).attr("data-state"));
-                // if ($(this).attr('data-state') == 'still'){
-                //     $(this).attr('src', response.data[i].images.fixed_height.url);
-                //     $(this).attr('data-state', "animated");
-                // }
-            })
+            } 
         });
     });
-
+    // onlick to pause/animate the gifs
+                $(document).on('click', "img", function(){
+                    // if state is still, change the img src to the animated gif URL
+                    if ($(this).attr('data-state') == 'still'){
+                        $(this).attr('src', $(this).attr('data-animate'));
+                        $(this).attr('data-state', "animated");
+                    }
+                    // otherwise, change the img src to the still URL
+                    else{
+                        $(this).attr('src', $(this).attr('data-still'));
+                        $(this).attr('data-state', 'still');
+                    }
+                })
 
     
 
