@@ -56,6 +56,7 @@ $(document).ready(function () {
     // all of the ajax call will go inside an onclick function, so that it all happens when the user clicks a button at the top of the screen.
 
     $(document).on("click", ".buttons", function () {
+        $("#gifs").empty();
         console.log("You clicked " + $(this).attr("data-name"));
         var q = $(this).attr("data-name");
         console.log("q is " + q);
@@ -70,11 +71,34 @@ $(document).ready(function () {
             console.log(response.data.length);
             // for loop to iterate through response and print the gifs to the screen
             // we want to grab rating and url from the response object
+            // then we want to append the info to the screen
+            // p tag for rating, then append the url
             for (i=0; i<response.data.length; i++){
-
+                //grab the rating
+                var p = $("<p>")
+                p.html(response.data[i].rating);
+                $("#gifs").append(p);
+                // grab the url
+                var img = $("<img>");
+                img.attr('src', response.data[i].images.fixed_height_still.url);
+                img.attr("data-animate", response.data[i].images.fixed_height.url);
+                img.attr('data-state', "still");
+                $("#gifs").append(img);
             }
+
+                
+            $(document).on('click', "img", function(){
+                console.log("data-state: " + $(this).attr("data-state"));
+                // if ($(this).attr('data-state') == 'still'){
+                //     $(this).attr('src', response.data[i].images.fixed_height.url);
+                //     $(this).attr('data-state', "animated");
+                // }
+            })
         });
     });
+
+
+    
 
     
 
