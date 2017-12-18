@@ -61,7 +61,7 @@ $(document).ready(function () {
         var q = $(this).attr("data-name");
         console.log("q is " + q);
         var api_key = "zaFO7iKkJOeIh5ISoyLyhCMFNi10fTLA";
-        var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + q + "&api_key=" + api_key + "&limit=10"
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + q + "&api_key=" + api_key + "&limit=10"
 
         $.ajax({
             url: queryURL,
