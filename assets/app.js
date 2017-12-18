@@ -80,13 +80,16 @@ $(document).ready(function () {
                 $("#gifs").append(p);
                 // dynamically creating the images
                 // setting attributes for data-still and data-animate to be able to change them later on
+                var newDiv = $("<div>");
+                newDiv.addClass('images')
                 var img = $("<img>");
                 img.attr('src', response.data[i].images.fixed_height_still.url);
                 img.attr('data-still', response.data[i].images.fixed_height_still.url);
                 img.attr('data-animate', response.data[i].images.fixed_height.url);
                 // data state helps track which url we're using
                 img.attr('data-state', "still");
-                $("#gifs").append(img);
+                newDiv.append(img);
+                $("#gifs").append(newDiv);
             } 
         });
     });
