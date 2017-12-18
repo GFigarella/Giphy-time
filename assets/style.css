@@ -1,0 +1,20 @@
+/* #gifs{
+    background-color: black;
+}
+
+#search{
+    background-color: red;
+} */
+
+.btn {
+    box-shadow: 3px 3px rgb(87, 77, 95);
+}
+.buttons{
+    margin-right: 5px;
+    margin-bottom: 10px;
+    box-shadow: 3px 3px rgb(56, 88, 72);
+}
+
+#topics {
+    margin-bottom: 10px;
+}
